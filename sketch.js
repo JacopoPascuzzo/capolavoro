@@ -1,4 +1,4 @@
-let pong1;
+et pong1;
 let pong2;
 let palla;
 let vite1 = 3;
@@ -11,6 +11,7 @@ let distpadY = 60;
 let distpadX = 50;
 let gameState = 'play'; 
 let restartButton;
+let endButton;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,12 +19,18 @@ function setup() {
   pong2 = new Pong(windowWidth - distpadX - larghezzapad, (windowHeight - altezzapad) / 2, larghezzapad, altezzapad);
   palla = new Palla(40);
 
-  restartButton = createButton('RESTART');
-  restartButton.position(windowWidth / 2 , windowHeight / 2 + 40);
+  
+  restartButton = createButton('Restart');
+  restartButton.position(windowWidth / 2 - 150, windowHeight / 2 + 40);
   restartButton.size(100, 50);
   restartButton.mousePressed(restartGame);
   restartButton.hide();
-  
+
+  endButton = createButton('Exit');
+  endButton.position(windowWidth / 2 +50, windowHeight / 2 + 40);
+  endButton.size(100, 50);
+  endButton.mousePressed(exitGame);
+  endButton.hide();
 }
 
 function draw() {
@@ -62,31 +69,22 @@ function draw() {
     }
   } else {
     textSize(32);
-    textStyle(BOLD);
-    fill(0,255,0);
+    fill(255);
     textAlign(CENTER, CENTER);
     if (gameState === 'win1') {
-      text('GAME OVER \nPlayer 1 Wins!', windowWidth / 2, windowHeight / 2-40 );
+      text('Player 1 Wins!', windowWidth / 2, windowHeight / 2 - 40);
     } else if (gameState === 'win2') {
-      text('GAME OVER \nPlayer 2 Wins!', windowWidth / 2, windowHeight / 2-40 );
+      text('Player 2 Wins!', windowWidth / 2, windowHeight / 2 - 40);
     }
   }
 
   
   textSize(20);
-  textStyle(BOLD);
-  fill(0,255,0);
+  fill(255);
   textAlign(LEFT, TOP);
-  text('WS TO MOVE \nPlayer 1 Victories: ' + vittorie1, 70, windowHeight - 60);
+  text('Player 1 Victories: ' + vittorie1, 70, windowHeight - 40);
   textAlign(RIGHT, TOP);
-  text(' ⬆ ⬇ TO MOVE \nPlayer 2 Victories: ' + vittorie2, windowWidth - 70, windowHeight - 60);
-  textAlign(CENTER,TOP)
-  textSize(40);
-  text('THE PONG',windowWidth/2,10)
-  textSize(15);
-  textStyle(ITALIC)
-  text('by J.Pascuzzo',windowWidth/2,50)
-
+  text('Player 2 Victories: ' + vittorie2, windowWidth - 70, windowHeight - 40);
 }
 
 function restartGame() {
@@ -96,6 +94,12 @@ function restartGame() {
   gameState = 'play';
   restartButton.hide();
   endButton.hide();
+}
+function exitGame() {
+  restartButton.hide();
+  endButton.hide();
+  window.close()
+  
 }
 
 function drawHeart(x, y, size) {
