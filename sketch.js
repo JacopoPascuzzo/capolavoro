@@ -19,14 +19,13 @@ function setup() {
   pong2 = new Pong(windowWidth - distpadX - larghezzapad, (windowHeight - altezzapad) / 2, larghezzapad, altezzapad);
   palla = new Palla(40);
 
-  
-  restartButton = createButton('Restart');
+  restartButton = createButton('RESTART');
   restartButton.position(windowWidth / 2 - 150, windowHeight / 2 + 40);
   restartButton.size(100, 50);
   restartButton.mousePressed(restartGame);
   restartButton.hide();
-
-  endButton = createButton('Exit');
+  
+  endButton = createButton('EXIT');
   endButton.position(windowWidth / 2 +50, windowHeight / 2 + 40);
   endButton.size(100, 50);
   endButton.mousePressed(exitGame);
@@ -69,22 +68,31 @@ function draw() {
     }
   } else {
     textSize(32);
-    fill(255);
+    textStyle(BOLD);
+    fill(0,255,0);
     textAlign(CENTER, CENTER);
     if (gameState === 'win1') {
-      text('Player 1 Wins!', windowWidth / 2, windowHeight / 2 - 40);
+      text('GAME OVER \nPlayer 1 Wins!', windowWidth / 2, windowHeight / 2-40 );
     } else if (gameState === 'win2') {
-      text('Player 2 Wins!', windowWidth / 2, windowHeight / 2 - 40);
+      text('GAME OVER \nPlayer 2 Wins!', windowWidth / 2, windowHeight / 2-40 );
     }
   }
 
   
   textSize(20);
-  fill(255);
+  textStyle(BOLD);
+  fill(0,255,0);
   textAlign(LEFT, TOP);
-  text('Player 1 Victories: ' + vittorie1, 70, windowHeight - 40);
+  text('WS TO MOVE \nPlayer 1 Victories: ' + vittorie1, 70, windowHeight - 60);
   textAlign(RIGHT, TOP);
-  text('Player 2 Victories: ' + vittorie2, windowWidth - 70, windowHeight - 40);
+  text(' ⬆ ⬇ TO MOVE \nPlayer 2 Victories: ' + vittorie2, windowWidth - 70, windowHeight - 60);
+  textAlign(CENTER,TOP)
+  textSize(40);
+  text('THE PONG',windowWidth/2,10)
+  textSize(15);
+  textStyle(ITALIC)
+  text('by J.Pascuzzo',windowWidth/2,50)
+
 }
 
 function restartGame() {
@@ -98,7 +106,7 @@ function restartGame() {
 function exitGame() {
   restartButton.hide();
   endButton.hide();
-  window.close()
+  window.close();
   
 }
 
