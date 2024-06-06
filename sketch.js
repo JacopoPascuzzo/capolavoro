@@ -1,4 +1,4 @@
-et pong1;
+let pong1;
 let pong2;
 let palla;
 let vite1 = 3;
