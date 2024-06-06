@@ -11,7 +11,6 @@ let distpadY = 60;
 let distpadX = 50;
 let gameState = 'play'; 
 let restartButton;
-let endButton;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -20,16 +19,11 @@ function setup() {
   palla = new Palla(40);
 
   restartButton = createButton('RESTART');
-  restartButton.position(windowWidth / 2 - 150, windowHeight / 2 + 40);
+  restartButton.position(windowWidth / 2 , windowHeight / 2 + 40);
   restartButton.size(100, 50);
   restartButton.mousePressed(restartGame);
   restartButton.hide();
   
-  endButton = createButton('EXIT');
-  endButton.position(windowWidth / 2 +50, windowHeight / 2 + 40);
-  endButton.size(100, 50);
-  endButton.mousePressed(exitGame);
-  endButton.hide();
 }
 
 function draw() {
@@ -102,12 +96,6 @@ function restartGame() {
   gameState = 'play';
   restartButton.hide();
   endButton.hide();
-}
-function exitGame() {
-  restartButton.hide();
-  endButton.hide();
-  window.close();
-  
 }
 
 function drawHeart(x, y, size) {
